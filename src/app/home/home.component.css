@@ -1,0 +1,32 @@
+.home-card{
+    margin: 10 5 0 5;
+    border-width: 1;
+    border-color: #dbf1ff;
+    background-color: #dbf1ff;
+    border-radius: 20;
+}
+
+.home-icon{
+    font-size: 90;
+    margin: 5 5 5 5;
+    color: black;
+}
+
+.line{
+    background-color: #3498db;
+}
+
+.card-header{
+    font-size: 30;
+    margin: 2 0 0 10;
+    color: black;
+    font-weight: 600;
+    font-family: 'Neuton-Regular';
+}
+
+.card-detail{
+    font-size: 15;
+    margin: 5 5 5 10;
+    color: black;
+    font-family: 'OpenSans-Regular';
+}

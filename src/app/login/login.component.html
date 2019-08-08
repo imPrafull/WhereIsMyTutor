@@ -1,0 +1,14 @@
+<GridLayout rows="*,4*" verticalAlignment="center">
+  <Image class="app-icon" row="0" src="res://icon"></Image>
+
+  <StackLayout row="1">
+    <ActivityIndicator [busy]="processing"></ActivityIndicator>
+    <Label class="app-name" text="Where's My Tutor" textWrap="true"></Label>
+    <Button class="fab login-button" isEnabled]="!processing" (tap)="loginWithGoogle()">
+      <FormattedString>
+        <Span text="Google"></Span>
+        <Span text=" Sign in"></Span>
+      </FormattedString>
+    </Button>
+  </StackLayout>
+</GridLayout>

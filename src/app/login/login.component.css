@@ -1,0 +1,23 @@
+.login-button{
+    height: 50;
+    width: 260;
+    border-radius: 30;
+    background-color: #3498db;
+    color: white;
+    font-size: 20;
+    font-weight: 600;
+}
+
+.app-name{
+    font-size: 50;
+    padding-bottom: 100;
+    color: black;
+    text-align: center; 
+    font-weight: 700;
+}
+
+.app-icon{
+    height: 100;
+    width: 100;
+    padding:  0 0 0 0;
+}
