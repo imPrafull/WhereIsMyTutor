@@ -23,12 +23,13 @@ export class LocationComponent implements OnInit {
     }
 
     getLocations(): void {
-        this.processing = true;
+        //this.processing = true;
         this.locationService.getLocations()
             .subscribe(response => {
                 this.locations = response;
+                console.log(response)
                 console.log(this.locations);
-                this.processing = false;
+                //this.processing = false;
             }, error => console.log("getLocations error: " + error))
     }
 

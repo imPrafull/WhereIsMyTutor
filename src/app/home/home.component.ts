@@ -35,7 +35,7 @@ export class HomeComponent implements OnInit {
     ngOnInit(): void {
         getCurrentUser()
             .then(result => {
-                this.hc_teacherName = result.name;
+                this.hc_teacherName = result.displayName;
             });
     }
 

@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
                     forceRefresh: true
                 }).then(
                     (token) => {
-                        appSettings.setString("Token", token);
+                        appSettings.setString("Token", token.token);
                         console.log("Auth token retrieved!");
                         self.getRole()
                             .subscribe(res => {
