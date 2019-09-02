@@ -6,6 +6,8 @@ import { getAuthToken } from "nativescript-plugin-firebase";
 import * as appSettings from "tns-core-modules/application-settings"
 import { Page } from "ui/page";
 import { alert } from "tns-core-modules/ui/dialogs";
+import { AppService } from "../app.service";
+import { setString } from "nativescript-plugin-firebase/crashlytics/crashlytics";
 
 @Component({
     selector: "wmt-login",
@@ -17,10 +19,18 @@ import { alert } from "tns-core-modules/ui/dialogs";
 export class LoginComponent implements OnInit {
 
     processing: boolean = false;   //activity indicator
+    role: string;
 
-    constructor(page: Page, private routerExtensions: RouterExtensions, private firebaseService: FirebaseService, private locationService: LocationService) {
+    constructor(
+        page: Page,
+        private routerExtensions: RouterExtensions,
+        private firebaseService: FirebaseService,
+        private locationService: LocationService,
+        private appService: AppService
+    ) {
         page.actionBarHidden = true;
     }
+
     ngOnInit(): void {
     }
 
@@ -31,7 +41,7 @@ export class LoginComponent implements OnInit {
             .then(result => {
                 console.log("Login success!");
                 getAuthToken({
-                    forceRefresh: true
+                    forceRefresh: false
                 }).then(
                     (token) => {
                         appSettings.setString("Token", token.token);
@@ -41,6 +51,7 @@ export class LoginComponent implements OnInit {
                                 let role: string = res['role']
                                 appSettings.setString("Role", role);
                                 console.log(appSettings.getString("Role"));
+                                this.appService.changeRole(role)
                             });
                     },
                     function (errorMessage) {
@@ -54,10 +65,7 @@ export class LoginComponent implements OnInit {
                     }
                 );
                 setTimeout(() => {
-                    if (appSettings.getString("Role") == "Student") {
-                        this.routerExtensions.navigate(["student-home"], { clearHistory: true });
-                    }
-                    else if (appSettings.getString("Role") == "Teacher") {
+                    if (appSettings.getString("Role") == "Student" || appSettings.getString("Role") == "Teacher"  ) {
                         this.routerExtensions.navigate(["home"], { clearHistory: true });
                     }
                     else {
@@ -69,7 +77,7 @@ export class LoginComponent implements OnInit {
                             console.log("The user closed the alert.");
                         });
                     }
-                }, 5000);
+                }, 2000);
                 this.processing = false;
             })
             .catch(err => {

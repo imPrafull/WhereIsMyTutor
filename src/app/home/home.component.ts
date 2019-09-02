@@ -3,18 +3,19 @@ import { RouterExtensions } from "nativescript-angular/router";
 import { BarcodeScanner } from "nativescript-barcodescanner";
 import { action } from "tns-core-modules/ui/dialogs";
 import { LocationService } from "../services/location.service";
-import { FirebaseService } from "../services/firebase.service";
 import { getCurrentUser, User as firebaseUser } from "nativescript-plugin-firebase";
 import * as moment from "moment";
 import * as Toast from "nativescript-toast";
 import * as appSettings from "tns-core-modules/application-settings";
+import { RadSideDrawer } from "nativescript-ui-sidedrawer";
+import * as app from "tns-core-modules/application";
 
 @Component({
     selector: "Home",
     moduleId: module.id,
     templateUrl: "./home.component.html",
     styleUrls: ["./home.component.css"],
-    providers: [LocationService, FirebaseService]
+    providers: [LocationService]
 })
 export class HomeComponent implements OnInit {
 
@@ -27,8 +28,7 @@ export class HomeComponent implements OnInit {
 
     constructor(private routerExtensions: RouterExtensions,
         private barcodeScanner: BarcodeScanner,
-        public locationService: LocationService,
-        private firebaseService: FirebaseService
+        public locationService: LocationService
     ) {
     }
 
@@ -152,6 +152,11 @@ export class HomeComponent implements OnInit {
             });
     }
 
+    onDrawerButtonTap(): void {
+        const sideDrawer = <RadSideDrawer>app.getRootView();
+        sideDrawer.showDrawer();
+    }
+
     onLocationTap(): void {
         this.routerExtensions.navigate(["location"]);
     }
@@ -163,12 +168,5 @@ export class HomeComponent implements OnInit {
 
     onAdminTap(){
         console.log("admin tapped")
-    }
-
-    logout(): void {
-        this.processing = true;
-        this.firebaseService.logout();
-        this.processing = false;
-        this.routerExtensions.navigate(["login"], { clearHistory: true });
     }
 }

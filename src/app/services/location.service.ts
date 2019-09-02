@@ -23,12 +23,6 @@ export class LocationService{
         return this.http.get("http://prafull158.pythonanywhere.com/api/roles", { headers: new HttpHeaders({'Authorization': appSettings.getString("Token")})});
     }
 
-    //getRole(){
-    //    return new Promise((resolve =>{
-    //    this.http.get("http://prafull158.pythonanywhere.com/api/roles", httpOptions);
-    //    });
-    //}
-
     addLocation(teacherName: string, className: string, lectures: number, startTime: string, endTime: string, startTimeDate: string){   //insert into backend
         return this.http.post(this.locationsURL, { teacher_name: teacherName, class_name: className, lectures: lectures, arrival_time: startTime, end_time: endTime, date: startTimeDate }, httpOptions);
     }
