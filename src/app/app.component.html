@@ -1,28 +1,28 @@
 <RadSideDrawer [drawerTransition]="sideDrawerTransition">
     <GridLayout tkDrawerContent rows="auto, *" class="sidedrawer sidedrawer-left">
         <StackLayout row="0" class="sidedrawer-header">
-            <Label class="sidedrawer-header-image fa" text="&#xf2bd;"></Label>
-            <Label class="sidedrawer-header-brand" text="User Name"></Label>
-            <Label class="footnote" text="username@mail.com"></Label>
+            <Image horizontalAlignment="left" class="sidedrawer-avatar" src="res://icon"></Image>
+            <Label class="sidedrawer-header-text var" text="User Name"></Label>
+            <Label class="sidedrawer-header-footnote var" text="username@mail.com"></Label>
         </StackLayout>
     
-        <ScrollView row="1" class="sidedrawer-content">
-            <StackLayout>
+        <ScrollView row="1">
+            <StackLayout class="sidedrawer-content">
                 <GridLayout *ngIf="role==='Teacher'" columns="auto, *" class="sidedrawer-list-item" [class.selected]="isComponentSelected('/home')" (tap)="onNavItemTap('/home')">
-                    <Label col="0" text="&#xf015;" class="fa"></Label>
-                    <Label col="1" text="Scan" class="p-r-10"></Label>
+                    <Label col="0" text="&#xf029;" class="fas sidedrawer-icon"></Label>
+                    <Label col="1" text="Scan" class="sidedrawer-item"></Label>
                 </GridLayout>
 
                 <GridLayout columns="auto, *" class="sidedrawer-list-item" [class.selected]="isComponentSelected('/location')" (tap)="onNavItemTap('/location')">
-                    <Label col="0" text="&#xf1ea;" class="fa"></Label>
-                    <Label col="1" text="Location" class="p-r-10"></Label>
+                    <Label col="0" text="&#xf3c5;" class="fas sidedrawer-icon"></Label>
+                    <Label col="1" text="Location" class="sidedrawer-item"></Label>
                 </GridLayout>
-    
+
                 <StackLayout class="hr-light"></StackLayout>
 
                 <GridLayout columns="auto, *" class="sidedrawer-list-item" [class.selected]="isComponentSelected('/logout')" (tap)="onLogoutTap()">
-                    <Label col="0" text="&#xf013;" class="fa"></Label>
-                    <Label col="1" text="Log out" class="p-r-10"></Label>
+                    <Label col="0" text="&#xf2f5;" class="fas sidedrawer-icon"></Label>
+                    <Label col="1" text="Log out" class="sidedrawer-item"></Label>
                 </GridLayout>
             </StackLayout>
         </ScrollView>
