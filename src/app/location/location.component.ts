@@ -1,6 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { RouterExtensions } from "nativescript-angular/router";
 import { LocationService } from "../services/location.service";
+import { RadSideDrawer } from "nativescript-ui-sidedrawer";
+import * as app from "tns-core-modules/application";
 
 @Component({
     moduleId: module.id,
@@ -37,8 +39,9 @@ export class LocationComponent implements OnInit {
         console.log("You tapped: " + this.locations[args.index]);
     }
 
-    goBack(): void {
-        this.router.back();
+    onDrawerButtonTap(): void {
+        const sideDrawer = <RadSideDrawer>app.getRootView();
+        sideDrawer.showDrawer();
     }
 
 }

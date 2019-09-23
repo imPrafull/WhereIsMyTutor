@@ -1,13 +1,13 @@
 <RadSideDrawer [drawerTransition]="sideDrawerTransition">
     <GridLayout tkDrawerContent rows="auto, *" class="sidedrawer sidedrawer-left">
         <StackLayout row="0" class="sidedrawer-header">
-            <Image horizontalAlignment="left" class="sidedrawer-avatar" src="res://icon"></Image>
-            <Label class="sidedrawer-header-text var" text="User Name"></Label>
-            <Label class="sidedrawer-header-footnote var" text="username@mail.com"></Label>
+            <Image horizontalAlignment="center" class="sidedrawer-avatar" [src]="userPhotoUrl"></Image>
+            <Label class="sidedrawer-header-text var" [text]="userDisplayName"></Label>
+            <Label class="sidedrawer-header-footnote var" [text]="userEmail"></Label>
         </StackLayout>
     
-        <ScrollView row="1">
-            <StackLayout class="sidedrawer-content">
+        <ScrollView row="1" class="sidedrawer-content">
+            <StackLayout>
                 <GridLayout *ngIf="role==='Teacher'" columns="auto, *" class="sidedrawer-list-item" [class.selected]="isComponentSelected('/home')" (tap)="onNavItemTap('/home')">
                     <Label col="0" text="&#xf029;" class="fas sidedrawer-icon"></Label>
                     <Label col="1" text="Scan" class="sidedrawer-item"></Label>

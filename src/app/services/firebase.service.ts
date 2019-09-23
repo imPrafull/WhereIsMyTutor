@@ -6,7 +6,8 @@ import {
     login as firebaseLogin,
     logout as firebaseLogout,
     User as firebaseUser,
-    LoginType
+    LoginType,
+    getCurrentUser
 } from "nativescript-plugin-firebase";
 
 @Injectable()
@@ -34,6 +35,10 @@ export class FirebaseService {
             .catch(err => {
                 console.log("Logout Fail: " + err);
             })
+    }
+
+    getCurrentUser(){
+        return getCurrentUser()
     }
 
 }

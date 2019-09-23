@@ -7,7 +7,6 @@ import * as appSettings from "tns-core-modules/application-settings"
 import { Page } from "ui/page";
 import { alert } from "tns-core-modules/ui/dialogs";
 import { AppService } from "../app.service";
-import { setString } from "nativescript-plugin-firebase/crashlytics/crashlytics";
 
 @Component({
     selector: "wmt-login",

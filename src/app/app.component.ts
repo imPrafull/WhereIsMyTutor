@@ -31,11 +31,16 @@ export class AppComponent implements OnInit, AfterViewInit {
 
     @ViewChild(RadSideDrawerComponent, { static: false }) drawerComponent: RadSideDrawerComponent;
 
+    public role: string;
+    public token: string;
+    public display
+    public userDisplayName: string;
+    public userPhotoUrl: string;
+    public userEmail: string;
     private _drawer: RadSideDrawer;
     private _activatedUrl: string;
     private _sideDrawerTransition: DrawerTransitionBase;
-    public role: string;
-    public token: string;
+
 
     public setToken(token: string) {
         this.token = token;
@@ -55,12 +60,19 @@ export class AppComponent implements OnInit, AfterViewInit {
     ngOnInit(): void {
         this._activatedUrl = "/home";
         this._sideDrawerTransition = new SlideInOnTopTransition();
+
+        
+        this.router.events
+            .pipe(filter((event: any) => event instanceof NavigationEnd))
+            .subscribe((event: NavigationEnd) => this._activatedUrl = event.urlAfterRedirects);
+            
         let self = this.locationService;
         let tempToken: string;
         firebase.init({
             persist: false,
             onAuthStateChanged: (data: any) => {
-                console.log(JSON.stringify(data))
+                this.getCurrentUser();
+                console.log(data)
                 if (data.loggedIn) {
                 }
                 else {
@@ -76,9 +88,6 @@ export class AppComponent implements OnInit, AfterViewInit {
             }
         );
 
-        this.router.events
-            .pipe(filter((event: any) => event instanceof NavigationEnd))
-            .subscribe((event: NavigationEnd) => this._activatedUrl = event.urlAfterRedirects);
     }
 
     ngAfterViewInit() {
@@ -87,6 +96,16 @@ export class AppComponent implements OnInit, AfterViewInit {
 
         this._drawerService.currentRole.subscribe(Role => this.role = Role);
         console.log("The role of the user is " + this.role)
+    }
+
+    getCurrentUser(){
+        this.firebaseService.getCurrentUser()
+            .then(user => {
+                this.userDisplayName = user.displayName;
+                this.userPhotoUrl = user.photoURL;
+                this.userEmail = user.email;
+            }) 
+            .catch(error => console.log("Get Current User Error:"+error))
     }
 
     get sideDrawerTransition(): DrawerTransitionBase {
