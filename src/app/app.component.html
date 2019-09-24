@@ -6,8 +6,8 @@
             <Label class="sidedrawer-header-footnote var" [text]="userEmail"></Label>
         </StackLayout>
     
-        <ScrollView row="1" class="sidedrawer-content">
-            <StackLayout>
+        <ScrollView row="1" >
+            <StackLayout class="sidedrawer-content">
                 <GridLayout *ngIf="role==='Teacher'" columns="auto, *" class="sidedrawer-list-item" [class.selected]="isComponentSelected('/home')" (tap)="onNavItemTap('/home')">
                     <Label col="0" text="&#xf029;" class="fas sidedrawer-icon"></Label>
                     <Label col="1" text="Scan" class="sidedrawer-item"></Label>
@@ -16,6 +16,11 @@
                 <GridLayout columns="auto, *" class="sidedrawer-list-item" [class.selected]="isComponentSelected('/location')" (tap)="onNavItemTap('/location')">
                     <Label col="0" text="&#xf3c5;" class="fas sidedrawer-icon"></Label>
                     <Label col="1" text="Location" class="sidedrawer-item"></Label>
+                </GridLayout>
+
+                <GridLayout *ngIf="role==='Teacher'" columns="auto, *" class="sidedrawer-list-item" [class.selected]="isComponentSelected('/records')" (tap)="onNavItemTap('/records')">
+                    <Label col="0" text="&#xf15c;" class="fas sidedrawer-icon"></Label>
+                    <Label col="1" text="Records" class="sidedrawer-item"></Label>
                 </GridLayout>
 
                 <StackLayout class="hr-light"></StackLayout>

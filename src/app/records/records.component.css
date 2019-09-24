@@ -1,0 +1,33 @@
+.list-group{
+    margin-top: 2;
+    padding: 0 5 5 5;
+}
+
+.list-group-item{
+    background-color: #ebf7ff;
+    border-radius: 10;
+    padding: 5 10 5 10;
+    margin-top: 10;
+}
+
+.list-title{
+    font-size: 22;
+    font-weight: 600;
+    font-family: 'Neuton-Regular'
+}
+
+.list-subtitle{
+    font-size: 18;
+    font-family: 'OpenSans-Regular'
+}
+
+.lecture{
+    font-size: 18;
+    font-family: 'JosefinSans-Regular';
+    text-align: center;
+}
+
+.list-detail{
+    font-size: 15;
+    font-family: 'OpenSans-Regular'
+}
