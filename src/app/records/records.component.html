@@ -20,15 +20,16 @@
         <ListView [items]="records" (itemTap)="onItemTap(event)" separatorColor="transparent" class="list-group">
             <ng-template let-item="item" let-odd="odd" let-even="even">
                 <StackLayout>
-                    <GridLayout rows="*,*,*" columns="auto,*,auto" class=" list-group-item">
-                        <Label [text]="item.teacher_name" row="0" col="1" rowSpan="2" class="list-title"></Label>
-                        <Label [text]="item.class_name" row="3" col="1" class="list-subtitle"></Label>
-                        <Label [text]="item.lectures" row="1" col="2" rowSpan="2" class="lecture"></Label>
-                        <StackLayout orientation="horizontal" row="0" col="2" class="list-detail">
+                    <GridLayout rows="3*,*,*" columns="auto,*,auto" class=" list-group-item">
+                        <Label [text]="item.teacher_name" row="0" col="0" class="list-title"></Label>
+                        <StackLayout horizontalAlignment="center" orientation="horizontal" row="0" col="1" class="list-detail">
                             <Label [text]="item.arrival_time"></Label>
                             <Label text="-" textWrap="true"></Label>
                             <Label [text]="item.end_time"></Label>
                         </StackLayout>
+                        <Label [text]="item.class_name" row="1" col="0" class="list-subtitle"></Label>
+                        <Label [text]="item.date" row="2" class="date" ></Label>
+                        <Label [text]="item.lectures" row="0" col="3" rowSpan="2" class="lecture"></Label>
                     </GridLayout>
                 </StackLayout>
             </ng-template>

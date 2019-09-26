@@ -3,6 +3,7 @@ import { HttpClient } from "@angular/common/http";
 import { HttpHeaders } from "@angular/common/http";
 import { Location } from "../models/location";
 import * as appSettings from "tns-core-modules/application-settings";
+import { Record } from "../models/record";
 
 let httpOptions = {
     headers: new HttpHeaders({
@@ -32,6 +33,6 @@ export class LocationService{
     }
 
     getRecords(){   //Get locations from backend
-        return this.http.get<Location[]>(this.apiURL + '/locations', httpOptions);
+        return this.http.get<Record[]>(this.apiURL + '/locations', httpOptions);
     }
 }
