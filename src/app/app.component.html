@@ -23,6 +23,11 @@
                     <Label col="1" text="Records" class="sidedrawer-item"></Label>
                 </GridLayout>
 
+                <GridLayout *ngIf="role==='Teacher'" columns="auto, *" class="sidedrawer-list-item" [class.selected]="isComponentSelected('/user')" (tap)="onNavItemTap('/user')">
+                    <Label col="0" text="&#xf0c0;" class="fas sidedrawer-icon"></Label>
+                    <Label col="1" text="Manage Users" class="sidedrawer-item"></Label>
+                </GridLayout>
+
                 <StackLayout class="hr-light"></StackLayout>
 
                 <GridLayout columns="auto, *" class="sidedrawer-list-item" [class.selected]="isComponentSelected('/logout')" (tap)="onLogoutTap()">
